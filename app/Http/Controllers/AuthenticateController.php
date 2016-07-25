@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
-use JWTAuth;
+use Tymon\JWTAuth\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
 
 class AuthenticateController extends Controller
 {
-    public function __construct()
+    public function __construct(JWTAuth $auth)
     {
         // $this->middleware('jwt.auth', ['except' => ['authenticate']]);
+        $this->JWTAuth = $auth;
     }
     /**
      * Return the user
@@ -35,7 +36,7 @@ class AuthenticateController extends Controller
         $credentials = $request->only('email', 'password');
         try {
             // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (! $token = $this->JWTAuth->attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
         } catch (JWTException $e) {
@@ -53,7 +54,7 @@ class AuthenticateController extends Controller
     public function getAuthenticatedUser()
     {
         try {
-            if (! $user = JWTAuth::parseToken()->authenticate()) {
+            if (! $user = $this->JWTAuth->parseToken()->authenticate()) {
                 return response()->json(['user_not_found'], 404);
             }
         } catch (Tymon\JWTAuth\Exceptions\TokenExpiredException $e) {
@@ -75,7 +76,7 @@ class AuthenticateController extends Controller
             'password' => bcrypt($request->get('password')),
             'admin' => 0
         ]);
-        $token = JWTAuth::fromUser($user);
+        $token = $this->JWTAuth->fromUser($user);
 
         return response()->json(compact('user'));
     }

@@ -136,6 +136,7 @@ return [
         Illuminate\Encryption\EncryptionServiceProvider::class,
         Illuminate\Filesystem\FilesystemServiceProvider::class,
         Illuminate\Foundation\Providers\FoundationServiceProvider::class,
+
         Illuminate\Hashing\HashServiceProvider::class,
         Illuminate\Mail\MailServiceProvider::class,
         Illuminate\Pagination\PaginationServiceProvider::class,
@@ -202,8 +203,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        "JWTAuth" => Tymon\JWTAuthFacedes\JWTAuth::class,
-        "JWTFactory" => Tymon\JWTAuthFacedes\JWTFactory::class,
+        "JWTAuth" => Tymon\JWTAuth\Facedes\JWTAuth::class,
+        "JWTFactory" => Tymon\JWTAuth\Facedes\JWTFactory::class,
     ],
 
 ];
