@@ -50,9 +50,14 @@
 
 			$authProvider.loginUrl = '/api/authenticate';
 
-			$urlRouterProvider.otherwise('/home');
+			$urlRouterProvider.otherwise('/intro');
 			
 			$stateProvider
+				.state('intro', {
+					url: '/intro',
+					templateUrl: '../views/introView.html',
+					controller: 'introController as intro'
+				})
 				.state('auth', {
 					url: '/auth',
 					templateUrl: '../views/authView.html',
@@ -63,33 +68,20 @@
 					templateUrl: '../views/userView.html',
 					controller: 'UserController as user'
 				})
-				.state('test', {
-					url: '/test',
-					templateUrl: '../views/testView.html',
-					resolve: {
-						isAuth: function($rootScope,$q, $state) {
-							var defer = $q.defer();
-							if($rootScope.currentUser) {
-								defer.resolve();
-							}else {
-								$timeout(function() {
-									$state.go('/auth');
-								})
-								defer.reject();
-							}
-							return defer.promise;
-					    }
-				    }
+				.state('game', {
+					url: '/game',
+					templateUrl: '../views/gameView.html',
 				})
 				.state('admin', {
 					url: '/admin',
 					templateUrl: '../views/adminView.html',
 					resolve: {
-						isAdmin: function($rootScope,$q, $state) {
+						isAdm: function($rootScope,$q, $state, $timeout) {
 							var defer = $q.defer();
 							if($rootScope.currentUser.admin) {
 								defer.resolve();
 							}else {
+								console.log("aaa")
 								$timeout(function() {
 									$state.go('auth');
 								})
@@ -98,11 +90,6 @@
 							return defer.promise;
 					    }
 				    }
-				})
-				.state('home', {
-					url: '/home',
-					templateUrl: '../views/homeView.html',
-					controller: 'homeController as home'
 				})
 				.state('registration', {
 					url: '/registration',
@@ -144,10 +131,6 @@
 
 						// go to the "main" state which in our case is users
 						$state.go('users');
-					}
-					else if(toState.name === 'home') {
-						event.preventDefault();
-						$state.go('test')
 					}
 				}		
 			});

@@ -4,10 +4,10 @@
 
 	angular
 		.module('App')
-		.controller('homeController', homeController);
+		.controller('introController', introController);
 
 
-	function homeController($auth, $state, $http, $rootScope) {
+	function introController($auth, $state, $http, $rootScope) {
 
 		var vm = this;
 
