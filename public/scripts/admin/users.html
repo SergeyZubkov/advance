@@ -1,0 +1,12 @@
+<div class='wrapper' ng-controller="UsersController as vm">
+  <table  ng-table='vm.tableParams' show-filter='true' class="table table-bordered">
+      <tr ng-repeat='user in $data'  show-filter='true'>
+        <td title="'ID'" filter="{id: 'number'}" sortable="'id'">{{user.id}}</td>
+        <td title="'Имя'" filter="{name: 'text'}" sortable="'name'">{{user.name}}</td>
+        <td title="'Email'" filter="{email: 'text'}" sortable="'email'">{{user.email}}</td>
+        <td title="'Статус'" filter="{admin: 'number'}" sortable="'admin'">{{user.admin}}</td>
+        <td title="'Зарегистрирован'" filter="{created_at: 'text'}" sortable="'created_at'">{{user.created_at}}</td>
+        <td title="'Изменен'" filter="{updated_at: 'text'}" sortable="'updated_at'">{{user.updated_at}}</td>
+      </tr>
+  </table>
+</div>

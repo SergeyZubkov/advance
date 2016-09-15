@@ -1,0 +1,20 @@
+<div class="wrapper anim-fade">
+	<div class="col-sm-4 col-sm-offset-4">
+		<div class="well">
+			<h3>Регистрация</h3>
+			<form>
+				<p class="alert alert-danger" ng-if="reg.loginError"><strong>Ошибка:</strong> {{reg.loginErrorText}}</p>
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Имя" ng-model="reg.name">
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Почта" ng-model="reg.email">
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Пароль" ng-model="reg.password">
+				</div>
+				<button class="btn btn-primary" ng-click="reg.submit()">Отправить</button>
+			</form>
+		</div>
+	</div>
+</div>

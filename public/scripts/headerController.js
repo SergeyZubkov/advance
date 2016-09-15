@@ -4,29 +4,25 @@
 
 	angular
 		.module('App')
-		.controller('headerController', headerController);
+		.controller('HeaderController', HeaderController);
 
+		HeaderController.$inject = ['serviceLogin', '$state'];
 
-		function headerController($auth, $state, $http, $rootScope) {
+		function HeaderController(serviceLogin, $state) {
 
 			var vm = this
-			vm.logout = function() {
+			vm.logout = logout;
+			vm.menuClass = menuClass;
 
-				$auth.logout().then(function() {
+			function logout() {
+				serviceLogin.logout().then(function() {
+					$state.go('auth');
+				})
+			};
 
-				// Remove the authenticated user from local storage
-				localStorage.removeItem('user');
-
-				// Flip authenticated to false so that we no longer
-				// show UI elements dependant on the user being logged in
-				$rootScope.authenticated = false;
-
-				// Remove the current user info from rootscope
-				$rootScope.currentUser = null;
-
-				// Redirect to auth (necessary for Satellizer 0.12.5+)
-				$state.go('auth');
-			});
+			function menuClass(page) {
+				var current = $state.current.name.split('.')[0]; 
+				return page === current ? 'active': '';
 			}
 		}
 

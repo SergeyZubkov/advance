@@ -1,0 +1,36 @@
+<div class="wrapper anim-fade text-center">
+  <h2 style='color:black;'>This is Game View</h2>
+  <div class="p-game__main-container"> 
+    <div class="p-game__intro-container" ng-show='vm.stage === "intro"'>
+      <p>Сначала вам будут показаны по очереди 3 цитаты, затем в цитатах будут удалены слова и ваша задача будет вспомнить и написать их.</p>
+      <div class="btn btn-primary" ng-click="vm.begin()">Начать</div>    
+    </div>
+    <div class="p-game__timer-container center-block" ng-show='vm.stage === "countdownStart"'>
+      <timer class='p-game__timer' interval='1000' countdown='5' autostart='false'>{{countdown}}</timer>
+    </div>
+    <div class="p-game__game-display" ng-show='vm.stage === "game"'>
+      <p>game!</p>
+      <my-game-directive  
+            current-item = 'vm.currentItem'
+            items='vm.data' 
+            delete-words = '4'
+            on-end='vm.showResults(answers)'
+            class='center-block'>
+      </my-game-directive>
+    </div>
+    <div class="p-game_result" ng-show="vm.stage === 'result'">
+      <h3>{{vm.score}}</h3>
+      <h4><span class="glyphicon glyphicon-time"></span>{{vm.time}}</h4>
+      <ul>
+        <li ng-repeat='answer in vm.answers'
+            ng-class="{isRight: answer.isRight, isFalse: !answer.isRight}">
+          {{answer.rightAnswer}} - {{answer.userAnswer}}
+        </li>
+      </ul>
+      <div class="btn btn-primary" ng-click="vm.reload()">Играть еще</div>
+    </div>
+    <div class="p-game_error" ng-show='vm.error'> 
+          {{vm.error}}
+    </div>
+  </div>
+</div>

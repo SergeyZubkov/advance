@@ -21,4 +21,9 @@ Route::group(['prefix' => 'api'], function()
 	Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
 	Route::post('authenticate', 'AuthenticateController@authenticate');
 	Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
+  Route::get('quotesAll', 'QuotesController@getAllQuotes');
+  Route::post('addQuote', 'QuotesController@addQuote');
+  Route::post('deleteQuoteById', 'QuotesController@deleteQuoteById');
+  Route::post('updateQuote', 'QuotesController@updateQuote');
+  Route::post('getRandomQuotesForUser', 'QuotesController@getRandomQuotesForUser');
 });

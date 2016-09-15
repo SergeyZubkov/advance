@@ -1,0 +1,19 @@
+<ul class='test-directive-list' style='list-style:none; 
+                white-space: nowrap; padding: 0; 
+                position: relative; height: 100%;
+                overflow: hidden;'>
+  <div class="wrap" style="position: absolute; min-height: 200px">
+    <li ng-repeat="item in vm.items track by $index" 
+      class='test-directive-item' 
+      style="display: inline-block;"
+      ng-style='{"visibility": ($index === 0 ? "visible": "hidden")}'
+      >
+      <p ng-bind-html='vm.trustAsHtml(item.text)'
+        style='white-space: normal'></p>
+        <small>{{item.author}}</small>
+    </li>
+  </div>
+</ul>
+<div>
+    <button ng-click='vm.next()' class="btn btn-primary center-block">Далее</button>
+</div>

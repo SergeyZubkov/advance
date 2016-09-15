@@ -1,0 +1,25 @@
+<div class='wrapper' ng-controller="QuotesController as vm">
+  <table  ng-show='!vm.showSpinner' ng-table='vm.tableParams' show-filter='true' class="table table-bordered table-hover table-condensed editable-table  ng-form="demo.tableForm" demo-tracked-table="vm.tableTracker"">
+    <tr ng-repeat='quote in $data'  show-filter='true' ng-form="quoteForm" demo-tracked-table-row="quote">
+       <td title="'ID'" filter="{id: 'number'}" sortable="'id'">{{quote.id}}</td>
+      <td title="'Автор'" filter="{author: 'text'}" ng-switch="quote.isEditing" ng-class="author.$dirty ? 'bg-warning' : ''" ng-form="author" sortable="'author'" demo-tracked-table-cell>
+        <span ng-switch-default class="editable-text">{{quote.author}}</span>
+          <div class="controls" ng-class="author.$invalid && author.$dirty ? 'has-error' : ''" ng-switch-when="true">
+            <input type="text" name="author" ng-model="quote.author" class="editable-input form-control input-sm" required />
+          </div>
+      </td>
+      <td title="'Текст'" filter="{text: 'text'}" ng-switch="quote.isEditing" ng-class="text.$dirty ? 'bg-warning' : ''" ng-form="text" sortable="'text'" demo-tracked-table-cell>
+        <span ng-switch-default class="editable-text">{{quote.text}}</span>
+          <div class="controls" ng-class="text.$invalid && text.$dirty ? 'has-error' : ''" ng-switch-when="true">
+            <input type="text" name="text" ng-model="quote.text" class="editable-input form-control input-sm" required />
+          </div>
+      </td>
+      <td>
+        <button class="btn btn-primary btn-sm" ng-click="vm.save(quote, quoteForm)" ng-if="quote.isEditing" ng-disabled="quoteForm.$pristine || quoteForm.$invalid"><span class="glyphicon glyphicon-ok"></span></button>
+        <button class="btn btn-default btn-sm" ng-click="vm.cancel(quote, quoteForm)" ng-if="quote.isEditing"><span class="glyphicon glyphicon-remove"></span></button>
+        <button class="btn btn-default btn-sm" ng-click="quote.isEditing = true" ng-if="!quote.isEditing"><span class="glyphicon glyphicon-pencil"></span></button>
+        <button class="btn btn-danger btn-sm" ng-click="vm.del(quote)" ng-if="!quote.isEditing"><span class="glyphicon glyphicon-trash"></span></button>
+      </td>
+    </tr>
+  </table>
+</div>

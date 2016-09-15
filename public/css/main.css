@@ -1,0 +1,85 @@
+[ng-cloak] {
+  display: none;
+}
+
+.page-intro__jumbotron  {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+}
+
+.page-intro__jumbotron_links {
+  margin: 30px 0 0; 
+  font-size: 18px;
+}
+.page-intro__jumbotron_btn {
+  margin: 50px 0 0 ;
+  font-size: 20px;
+}
+
+.page-intro_p {
+  font-size: 16px;
+}
+
+.wrapper {
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0 auto;
+}
+
+.view-container {
+  position: relative;
+}
+
+/*============================
+=            Game            =
+============================*/
+
+.p-game__timer-container {
+  padding: 120px 0;
+  font-size: 20px;
+  width: 500px;
+}
+.p-game__timer {
+  font-size: 50px;
+  color: #000;    
+}
+
+.test-directive-list {
+  min-height: 400px;
+  width: 350px;
+  margin: 0 auto;
+
+}
+.test-directive-item {
+  min-height: 200px;
+  width: 350px;  
+  vertical-align: top;
+  display: none;
+  margin: 0 auto;
+
+}
+/*=====  End of Game  ======*/
+
+
+/*=============================
+=            Admin            =
+=============================*/
+
+
+
+/*----------  addQuote  ----------*/
+input {
+    width: 300px;
+    height: 30px;
+}
+
+textarea {
+  resize:none;
+}
+
+
+/*=====  End of Admin  ======*/
+

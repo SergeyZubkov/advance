@@ -8,6 +8,8 @@ use App\Http\Controllers\Controller;
 use Tymon\JWTAuth\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\User;
+use App\Quote;
+
 
 class AuthenticateController extends Controller
 {
@@ -26,6 +28,7 @@ class AuthenticateController extends Controller
         $users = User::all();
         return $users;
     }
+
     /**
      * Return a JWT
      *

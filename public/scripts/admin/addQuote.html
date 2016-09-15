@@ -1,0 +1,12 @@
+<div class='wrapper' ng-controller="AddQuoteController as vm">
+  <!-- <p class="alert alert-danger" ng-if=""><strong>Ошибка:</strong> {{auth.loginErrorText}}</p> -->
+  <form name='addQuoteForm' novalidate="">
+      <input type="text" name='author' ng-model="vm.author" placeholder='Автор' ng-required>
+      <br/>
+      <br/>
+
+      <textarea cols="40" name='text' rows="10" ng-model="vm.text" placeholder='Текст' ng-required></textarea>
+      <br />
+      <button ng-disabled="!(addQuoteForm.author.$viewValue&&addQuoteForm.text.$viewValue)" class="btn btn-primary" ng-click='vm.addQuote()'>Добавить</button>
+  </form>
+</div>
