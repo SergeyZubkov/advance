@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="node_modules/ng-table/dist/ng-table.min.css">
   <link rel="stylesheet" href="node_modules/angular-ui-notification/dist/angular-ui-notification.min.css">
-  <link rel="stylesheet" href="bower_components/angular-ui-router-anim-in-out/css/anim-in-out.css">
+
+  <link rel="stylesheet" href="css/router-animate.css">
   <link rel="stylesheet" href="css/main.css">
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -69,9 +70,7 @@
 <!--=============================
 =            Content            =
 ==============================-->
-<div class="container">
-    <div ui-view class='anim-in-out anim-slide-left view-container' data-anim-sync data-anim-speed='200'></div>
-</div> 
+<div ui-view class='router-animate view-container' data-anim-speed='700'></div>
 <!--====  End of Content  ====-->
 
 <!--=============================
@@ -95,13 +94,14 @@
     <script src="node_modules/moment/min/moment.min.js"></script>
     <script src="bower_components/humanize-duration/humanize-duration.js"></script>
     <script src="bower_components/angular-animate/angular-animate.min.js"></script>
-    <script src="bower_components/angular-ui-router-anim-in-out/anim-in-out.js"></script>
+    <script src="scripts/routerAnimate.js"></script>
+
+
 
     <!-- Application Scripts -->
     <script src="scripts/app.js"></script>
     <script src="scripts/routes.js"></script>
     <script src="scripts/authentication.cfg.js"></script>
-
     <!-- services -->
     <script src="scripts/services/login.js"></script>
     <script src="scripts/services/dataService.js"></script>

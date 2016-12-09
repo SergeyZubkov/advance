@@ -1,7 +1,13 @@
-[ng-cloak] {
+[ng-cloak] {page-break-before: 
   display: none;
 }
-
+body {
+  overflow-x: hidden;
+}
+body,html {
+  width: 100%;
+  height: 100%;
+}
 .page-intro__jumbotron  {
   background-color: #f8f8f8;
   border: 1px solid #e7e7e7;
@@ -20,18 +26,39 @@
   font-size: 16px;
 }
 
-.wrapper {
-  position: absolute;
-  top:0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0 auto;
+
+/*==================================================
+=            Overwrite Bootstrap styles            =
+==================================================*/
+.navbar-default {
+  margin-bottom: 0 !important;
+
 }
 
-.view-container {
-  position: relative;
+
+/*=====  End of Overwrite Bootstrap styles  ======*/
+
+
+/*==============================
+=            Router            =
+==============================*/
+.router-animate {
+  position:absolute;
+  transition-timing-function: ease-out;
+  width: 100%;
+  height: 100%;
 }
+
+.view {
+  position: absolute;
+  width: 100%;
+  height: 100%;  
+  background: #FFF; 
+  transiton: 0.5s;
+}
+/*=====  End of Router  ======*/
+
+
 
 /*============================
 =            Game            =

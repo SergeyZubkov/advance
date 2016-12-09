@@ -1,0 +1,58 @@
+.router-animate.forward-anim-out-setup {
+  transform: translateX(0);
+  transition: .5s;
+}
+.router-animate.forward-anim-out {
+  transform: translateX(0%);
+  transition: .5s;
+}
+.router-animate.forward-anim-in-setup {
+  transform: translateX(100%);
+  transition: .5s;
+  z-index: 2;
+}
+.router-animate.forward-anim-in {
+  transform: translateX(0);
+  transition: .5s;
+  z-index: 2;
+}
+
+
+.router-animate.backward-anim-out-setup {
+  transform: translateX(0);
+  transition: .5s;
+  z-index: 2;
+  box-shadow: 20px 0px 40px -10px #999;
+  transition-timing-function: ease-in;
+}
+.router-animate.backward-anim-out {
+  transform: translateX(100%);
+  transition: .5s;
+  z-index: 2;
+  box-shadow: -20px 0px 40px -10px #999;
+    transition-timing-function: ease-in;
+}
+.router-animate.backward-anim-in-setup{
+  transform: translateX(0);
+  transition: .5s;
+    transition-timing-function: ease-in;
+}
+.router-animate.backward-anim-in {
+  transform: translateX(0);
+  transition: .5s;
+    transition-timing-function: ease-in;
+}
+
+
+.router-animate.backward-anim-in .view {
+    z-index: 1;
+}
+
+.router-animate.backward-anim-in .view {
+     background-color: rgba(70,70,70,0.1);
+     z-index:   1;
+}
+
+.router-animate.forward-anim-out  .view{
+     background-color: rgba(70,70,70,0.1);
+}

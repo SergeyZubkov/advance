@@ -4,11 +4,14 @@
 	'use strict';
 
 	angular
-		.module('App', ['ui.router', 'satellizer', 'ngTable', 'ui-notification', 'timer','ngAnimate', 'anim-in-out'])
+		.module('App', ['ui.router', 'satellizer', 'ngTable', 'ui-notification', 'timer','ngAnimate', 'routerAnimate'])
 		.run(setTitle)
+		.run(handlerStateChange)
 		.config(notification);
 
-		setTitle.$inject = ['$rootScope']
+		setTitle.$inject = ['$rootScope'];
+		handlerStateChange.$inject = ['$rootScope'];
+
 
 		function setTitle($rootScope) {
 			$rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) {
@@ -28,4 +31,14 @@
         });
     }
 		
+		function handlerStateChange($rootScope) {
+			$rootScope.$on('$stateChangeStart', function(event,  toState, toParams, fromState, forParams) {
+				if(toState.step&&fromState.step) {
+					var animationDirection = toState.step > fromState.step ? 'forward' : 'backward';
+					
+					console.log(animationDirection)
+					$rootScope.animationDirection = animationDirection;
+				}
+			})
+		}
 })();
